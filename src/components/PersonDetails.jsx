@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 function PersonDetails({ person, setPerson }) {
+
+  const [isOpen, setIsOpen] = useState(true);
+
+  function toggleSection() {
+    setIsOpen(!isOpen);
+  }
 
   function handleChange(e) {
     setPerson({
@@ -9,7 +17,11 @@ function PersonDetails({ person, setPerson }) {
 
   return (
     <>
-      <div className="person-details">
+      <div className="section-header person" onClick={toggleSection}>
+        <p>Personal Details</p>
+        <span>{isOpen ? "▲" : "▼"}</span>
+      </div>
+      {isOpen && <div className="person-details section-content">
         <label htmlFor="name">Name: </label>
         <input
           type="text"
@@ -31,23 +43,23 @@ function PersonDetails({ person, setPerson }) {
         />
 
         <label htmlFor="phone">Phone: </label>
-        <input 
-          type="tel" 
-          name="phone" 
+        <input
+          type="tel"
+          name="phone"
           id="phone"
           value={person.phone}
-          onChange={handleChange} 
+          onChange={handleChange}
         />
 
         <label htmlFor="website">Website: </label>
-        <input 
+        <input
           type="text"
           name="website"
           id="website"
           value={person.website}
           onChange={handleChange}
         />
-      </div>
+      </div>}
     </>
   )
 }
