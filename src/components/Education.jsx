@@ -1,16 +1,36 @@
 function Education({ institute, setInstitute }) {
 
-    function handleChange(e) {
-        setInstitute({
+    function handleChange(index, e) {
+        const updatedInstitute = [...institute];
+
+        updatedInstitute[index][e.target.name] = e.target.value;
+
+        setInstitute(updatedInstitute);
+    }
+
+    function handleClick() {
+        setInstitute([
             ...institute,
-            [e.target.name]: e.target.value
-        });
+            {
+                college: "",
+                course: "",
+                collegePassYear: ""
+            }
+        ])
+    }
+
+    function handleDelete(indexToDelete) {
+        const filteredWork = institute.filter(
+            (_, index) => index !== indexToDelete
+        );
+
+        setInstitute(filteredWork);
     }
 
     return (
         <>
-            <div className="education">
-
+            <div className="education-details">
+                <h2>Education</h2>
                 <label htmlFor="school">School</label>
                 <input
                     type="text"
@@ -31,35 +51,46 @@ function Education({ institute, setInstitute }) {
                     placeholder="Year"
                 />
 
-                <label htmlFor="college">College</label>
-                <input
-                    type="text"
-                    name="college"
-                    id="college"
-                    value={institute.college}
-                    onChange={handleChange}
-                    placeholder="College Name"
-                />
+                {institute.map((inst, index) => (
+                    <div className="college-details" key={index}>
+                        <h2>College {index + 1}</h2>
 
-                <label htmlFor="course">Course</label>
-                <input
-                    type="text"
-                    name="course"
-                    id="course"
-                    value={institute.course}
-                    onChange={handleChange}
-                    placeholder="Course Name"
-                />
+                        <label>College Name:</label>
+                        <input
+                            type="text"
+                            name="college"
+                            value={inst.college}
+                            onChange={(e) => handleChange(index, e)}
+                        />
 
-                <label htmlFor="collegePassYear">Passing Year</label>
-                <input
-                    type="text"
-                    name="collegePassYear"
-                    id="collegePassYear"
-                    value={institute.collegePassYear}
-                    onChange={handleChange}
-                    placeholder="Year"
-                />
+                        <label>Course:</label>
+                        <input
+                            type="text"
+                            name="course"
+                            value={inst.course}
+                            onChange={(e) => handleChange(index, e)}
+                        />
+
+                        <label>Pass Year:</label>
+                        <input
+                            type="text"
+                            name="passYear"
+                            value={inst.collegePassYear}
+                            onChange={(e) => handleChange(index, e)}
+                        />
+
+                        {institute.length > 1 && (
+                            <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
+                        )}
+
+                        {/* ONLY LAST ITEM GETS BUTTON */}
+                        {index === institute.length - 1 && (
+                            <button className="add-btn" onClick={handleClick}>
+                                + Add More Degree
+                            </button>
+                        )}
+                    </div>
+                ))}
             </div>
         </>
     )
