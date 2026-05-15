@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 function Education({ institute, setInstitute }) {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    function toggleSection() {
+        setIsOpen(!isOpen);
+    }
 
     function handleChange(index, e) {
         const updatedInstitute = [...institute];
@@ -29,8 +37,12 @@ function Education({ institute, setInstitute }) {
 
     return (
         <>
-            <div className="education-details">
-                <h2>Education</h2>
+            <div className="section-header" onClick={toggleSection}>
+                <p>Education</p>
+                <p>{isOpen ? " ▲" : " ▼"}</p>
+            </div>
+
+           {isOpen && <div className="section-content education-details">
                 <label htmlFor="school">School</label>
                 <input
                     type="text"
@@ -91,7 +103,7 @@ function Education({ institute, setInstitute }) {
                         )}
                     </div>
                 ))}
-            </div>
+            </div>}
         </>
     )
 }
