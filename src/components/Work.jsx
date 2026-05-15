@@ -1,9 +1,28 @@
+import { useState } from "react";
+
 function Work({ work, setWork }) {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggleSection() {
+    setIsOpen(!isOpen);
+  }
 
   function handleChange(index, e) {
     const updatedWork = [...work];
 
-    updatedWork[index][e.target.name] = e.target.value;
+    // checkbox gives checked instead of value
+    const value =
+      e.target.type === "checkbox"
+        ? e.target.checked
+        : e.target.value;
+
+    updatedWork[index][e.target.name] = value;
+
+    // optional: clear endDate when checked
+    if (e.target.name === "currentlyWorking" && e.target.checked) {
+      updatedWork[index].endDate = "";
+    }
 
     setWork(updatedWork);
   }
@@ -16,7 +35,8 @@ function Work({ work, setWork }) {
         jobTitle: "",
         jobResponsibility: "",
         startDate: "",
-        endDate: ""
+        endDate: "",
+        currentlyWorking: false
       }
     ]);
   }
@@ -31,8 +51,13 @@ function Work({ work, setWork }) {
 
   return (
     <>
-      {work.map((job, index) => (
-        <div className="work-experience" key={index}>
+      <div className="section-header" onClick={toggleSection}>
+        <p>Work Experience</p>
+        <p>{isOpen ? " ▲" : " ▼"}</p>
+      </div>
+
+      {isOpen && work.map((job, index) => (
+        <div className="work-experience section-content" key={index}>
           <h2>Work {index + 1}</h2>
 
           <label>Company Name:</label>
@@ -65,21 +90,36 @@ function Work({ work, setWork }) {
             name="startDate"
             value={job.startDate}
             onChange={(e) => handleChange(index, e)}
-          />
+          />          
 
           <label>End Date:</label>
           <input
             type="date"
             name="endDate"
             value={job.endDate}
+            disabled={job.currentlyWorking}
             onChange={(e) => handleChange(index, e)}
           />
 
+          <label>
+            <input
+              type="checkbox"
+              name="currentlyWorking"
+              checked={job.currentlyWorking}
+              onChange={(e) => handleChange(index, e)}
+            />
+            I am currently working here
+          </label>
+
           {work.length > 1 && (
-            <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
+            <button
+              className="delete-btn"
+              onClick={() => handleDelete(index)}
+            >
+              Delete
+            </button>
           )}
 
-          {/* ONLY LAST ITEM GETS BUTTON */}
           {index === work.length - 1 && (
             <button className="add-btn" onClick={handleClick}>
               + Add More Work
