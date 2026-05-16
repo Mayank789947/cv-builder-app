@@ -44,10 +44,20 @@
   display: flex;
   align-items: center;
   gap: 0.5em;
+  transition: all 0.3s ease;
 }
 
 .download-btn {
   background-color: blueviolet;
+  transition: all 0.3s ease;
+}
+
+.print-btn:hover,
+.download-btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  opacity: 0.8;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .main-content {
@@ -354,6 +364,8 @@ input {
 input:hover {
   cursor: pointer;
 }
+
+
 
 /* CV Print */
 
