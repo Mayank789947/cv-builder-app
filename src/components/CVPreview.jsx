@@ -1,49 +1,135 @@
-function CVPreview({ person, institute, work }) {
+function CVPreview({ person, institute, work, techStacks }) {
 
-  const { name, email, phone, website } = person;
+   const { name, email, phone, website } = person;
 
-  return (
-    <>
+   // PERSONAL INFO CHECK
+   const hasPersonalInfo =
+      name || email || phone || website;
+
+   // EDUCATION CHECK
+   const hasEducation = institute.some(
+      (edu) =>
+         edu.college ||
+         edu.course ||
+         edu.collegePassYear
+   );
+
+   // WORK CHECK
+   const hasWork = work.some(
+      (job) =>
+         job.company ||
+         job.jobTitle ||
+         job.jobResponsibility ||
+         job.startDate ||
+         job.endDate
+   );
+
+   // TECH STACKS CHECK
+   const hasTechStacks = techStacks.some(
+      (item) => item.techStack
+   );
+
+   return (
       <div className="cv-preview">
 
-        <div className="personal">
-          <h2>Name: {name}</h2>
-          <p>Email: {email}</p>
-          <p>Phone: {phone}</p>
-          <p>Website: {website}</p>
-        </div>
+         <div className="cv-paper">
 
-        <div className="education">
-          <h2>Education</h2>
+            {/* PERSONAL SECTION */}
+            {hasPersonalInfo && (
+               <div className="personal">
+                  {name && <p>{name}</p>}
+                  {email && <p>{email}</p>}
+                  {phone && <p>{phone}</p>}
+                  {website && <p>{website}</p>}
+               </div>
+            )}
 
-          {institute.map((edu, index) => (
-            <div key={index}>
-              <p>School: {edu.school}</p>
-              <p>Passing Year: {edu.schoolPassYear}</p>
-              <p>College: {edu.college}</p>
-              <p>Course: {edu.course}</p>
-              <p>Passing Year: {edu.collegePassYear}</p>
-            </div>
-          ))}
-        </div>
+            {/* EDUCATION SECTION */}
+            {hasEducation && institute.map((edu, index) => (
+               <div className="edu-card" key={index}>
 
-        <div className="work">
-          <h2>Work Experience</h2>
+                  <h4>Institute {index + 1}</h4>
 
-          {work.map((job, index) => (
-            <div key={index}>
-              <p>Company: {job.company}</p>
-              <p>Job Title: {job.jobTitle}</p>
-              <p>Job Responsibility: {job.jobResponsibility}</p>
-              <p>Start Date: {job.startDate}</p>
-              <p>End Date: {job.endDate}</p>
-            </div>
-          ))}
-        </div>
+                  {edu.college && (
+                     <p>College: {edu.college}</p>
+                  )}
+
+                  {edu.course && (
+                     <p>Course: {edu.course}</p>
+                  )}
+
+                  {edu.collegePassYear && (
+                     <p>
+                        Passing Year:
+                        {edu.collegePassYear}
+                     </p>
+                  )}
+
+               </div>
+            ))}
+
+            {/* WORK SECTION */}
+            {hasWork && work.map((job, index) => (
+               <div className="work-card" key={index}>
+
+                  <h4>Experience {index + 1}</h4>
+
+                  {job.company && (
+                     <p>Company: {job.company}</p>
+                  )}
+
+                  {job.jobTitle && (
+                     <p>Job Title: {job.jobTitle}</p>
+                  )}
+
+                  {job.jobResponsibility && (
+                     <p>
+                        Job Responsibility:
+                        {job.jobResponsibility}
+                     </p>
+                  )}
+
+                  {job.startDate && (
+                     <p>
+                        Start Date:
+                        {job.startDate}
+                     </p>
+                  )}
+
+                  {job.endDate && (
+                     <p>
+                        End Date:
+                        {job.endDate}
+                     </p>
+                  )}
+
+               </div>
+            ))}
+
+            {/* TECH STACKS SECTION */}
+            {hasTechStacks && (
+               <div className="techStacks-preview">
+                  <h3>Tech Stack</h3>
+
+                  <div className="techStacks-list">
+                     {techStacks.map((item, index) => (
+                        item.techStack && (
+                           <span
+                              className="techStack-pill"
+                              key={index}
+                           >
+                              {item.techStack}
+                           </span>
+                        )
+                     ))}
+                  </div>
+               </div>
+            )}
+
+         </div>
 
       </div>
-    </>
-  );
+   );
 }
 
 export default CVPreview;

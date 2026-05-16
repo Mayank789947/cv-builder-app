@@ -3,7 +3,8 @@ import PersonDetails from "./PersonDetails";
 import CVPreview from "./CVPreview";
 import Education from "./Education";
 import Work from "./Work";
-import Skill from "./Skill";
+import TechStacks from "./TechStacks";
+
 
 function FormPanel() {
     const [person, setPerson] = useState({
@@ -15,11 +16,10 @@ function FormPanel() {
 
     const [institute, setInstitute] = useState([
         {
-            school: "",
-            schoolPassYear: "",
             college: "",
             course: "",
-            collegePassYear: ""
+            collegePassYear: "",
+            currentlyStudying: false
         }
     ]);
 
@@ -33,9 +33,9 @@ function FormPanel() {
         }
     ]);
 
-    const [skills, setSkills] = useState([
+    const [techStacks, setTechStacks] = useState([
         {
-            skill: ""
+            techStack: ""
         }
     ]);
 
@@ -46,10 +46,10 @@ function FormPanel() {
                     <PersonDetails person={person} setPerson={setPerson} />
                     <Education institute={institute} setInstitute={setInstitute} />
                     <Work work={work} setWork={setWork} />
-                    <Skill skills={skills} setSkills={setSkills} />
+                    <TechStacks techStacks={techStacks} setTechStacks={setTechStacks} />
                 </div>
                 <div className="cv-preview">
-                    <CVPreview person={person} institute={institute} work={work} skills={skills} />
+                    <CVPreview person={person} institute={institute} work={work} techStacks={techStacks} />
                 </div>
             </div>
         </>
