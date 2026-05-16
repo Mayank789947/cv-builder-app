@@ -7,6 +7,12 @@ function Header() {
 
     function handleDownload() {
 
+        const isConfirmed = window.confirm(
+            "Do you want to download your CV as PDF?"
+        );
+
+        if (!isConfirmed) return;
+
         const element =
             document.querySelector(".cv-paper");
 
