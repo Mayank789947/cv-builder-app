@@ -1,6 +1,7 @@
 #root {
+  min-height: 100vh;
+
   display: grid;
-  grid-template-columns: 2fr 3fr;
   grid-template-rows: 6em 1fr;
 }
 
@@ -10,40 +11,447 @@
   color: white;
   justify-content: space-between;
   align-items: center;
-  padding: 0 4em 1em;
+  padding: 0 6em 1em;
   grid-area: 1 / 1 / 2 / 3;
+}
 
-  .header-left > h1 {
-     font-size: 1.8rem;
-     text-align: left;
-     margin-bottom: 0.3em;
-     color: orchid;
+.header-left>h1 {
+  font-size: 1.8rem;
+  text-align: left;
+  margin-bottom: 0.3em;
+  color: orchid;
+}
+
+.header-left>p {
+  font-size: 0.8rem;
+}
+
+.header-right {
+  display: flex;
+  gap: 1em;
+  margin-inline-end: 1.3em;
+}
+
+.header-right>button {
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  font-size: 0.7rem;
+}
+
+.print-btn {
+  background-color: rgb(249, 65, 65);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.download-btn {
+  background-color: blueviolet;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+
+  padding: 2rem;
+  margin: 0 auto 0 4rem;
+}
+
+.form-panel {
+  position: sticky;
+  top: 20px;
+
+  align-self: start;
+}
+
+.cv-preview {
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+  text-align: left;
+}
+
+.cv-paper {
+  width: 794px;
+  min-height: 800px;
+
+  background-color: white;
+  color: black;
+
+  padding: 3rem;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.cv-paper h1,
+.cv-paper h2 {
+  margin-bottom: 0.5rem;
+}
+
+.cv-paper p {
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
+
+/* PERSONAL SECTION */
+
+.personal {
+  background: linear-gradient(
+    135deg,
+    #000000,
+    #111111,
+    #1f1f1f
+  );
+
+  color: #ffb347;
+
+  padding: 2.5rem 3rem;
+
+  margin:
+    -3rem -3rem 2rem -3rem;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.6rem;
+}
+
+.personal p {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  color: #ff7b00;
+}
+
+.personal p:first-child {
+  font-size: 2rem;
+  font-weight: 700;
+
+  margin-bottom: 0.5rem;
+
+  color: #ff7b00;
+}
+
+/* OTHER CV SECTIONS */
+
+.education,
+.work,
+.skills-preview,
+.techStacks-preview {
+  margin-top: 1.5rem;
+
+  padding: 1.5rem;
+
+  border-radius: 12px;
+
+  background-color: #fafafa;
+
+  border: 1px solid #e5e7eb;
+}
+
+.education h3,
+.work h3,
+.skills-preview h3,
+.techStacks-preview h3 {
+  margin-bottom: 1rem;
+
+  color: #6d28d9;
+
+  font-size: 1.2rem;
+
+  border-bottom: 2px solid #e9d5ff;
+
+  padding-bottom: 0.5rem;
+}
+
+/* TECH STACKS */
+
+.techStacks-list,
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-list {
+  flex-direction: column;
+}
+
+.techStack-pill {
+  background: linear-gradient(135deg,
+      #f59e0b,
+      #f97316);
+
+  color: white;
+
+  padding: 0.3rem 1rem;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+
+  font-weight: 500;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list {
+  margin: 0;
+}
+
+/* FORM PANELS */
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 1.25rem;
+
+  cursor: pointer;
+
+  background: var(--accent-bg);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header:hover {
+  background: rgba(170, 59, 255, 0.15);
+}
+
+.section-content {
+  padding: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.person-details,
+.education-details,
+.work-experience,
+.techStacks,
+.skills {
+  margin-bottom: 2rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0 0 16px 16px;
+
+  overflow: hidden;
+
+  background: var(--bg);
+
+  box-shadow: var(--shadow);
+
+  text-align: left;
+}
+
+.college-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+/* BUTTONS */
+
+.add-btn,
+.add-tech-stack,
+.add-skill,
+.delete-btn,
+.dlt-tech-stack,
+.dlt-skill {
+  margin: 2em 0 1em;
+
+  font-size: 0.8rem;
+
+  padding: 0.5em 0;
+
+  background-color: initial;
+
+  border-radius: 0.5em;
+
+  border-style: dashed;
+}
+
+.delete-btn,
+.dlt-tech-stack,
+.dlt-skill {
+  background-color: red;
+  border-style: none;
+}
+
+.dlt-tech-stack,
+.dlt-skill {
+  margin-top: 0.5em;
+}
+
+.add-btn:hover,
+.add-skill:hover,
+.add-tech-stack:hover {
+  border-color: green;
+  cursor: pointer;
+}
+
+.delete-btn:hover,
+.dlt-tech-stack:hover,
+.dlt-skill:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.edu-card,
+.work-card {
+  background-color: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-left: 5px solid #7c3aed;
+
+  border-radius: 12px;
+
+  padding: 1.2rem;
+
+  margin-bottom: 1rem;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.edu-card h4,
+.work-card h4 {
+  margin-bottom: 0.8rem;
+
+  color: #6d28d9;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+}
+
+.work-card {
+  border-left-color: #f97316;
+}
+
+.work-card h4 {
+  color: #ea580c;
+}
+
+input {
+  border-radius: 0.5em;
+  padding: 5px;
+}
+
+input:hover {
+  cursor: pointer;
+}
+
+/* CV Print */
+
+@media print {
+
+  body * {
+    visibility: hidden;
   }
 
-  .header-left > p {
-    font-size: 0.8rem;
+  .cv-paper,
+  .cv-paper * {
+    visibility: visible;
+  }
+
+  .cv-paper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+   .cv-paper .personal {
+    background: black;
+    color: #ffb347;
+
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cv-paper .personal p:first-child {
+    color: #ff7b00;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  .main-content {
+    grid-template-columns: 1fr;
+    margin-top: 1em;
+    margin-left: 0;
+  }
+
+  .form-panel {
+    width: 100%;
+    position: initial;
+  }
+
+  .cv-preview {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .cv-paper {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .personal {
+    margin:
+      -1.5rem -1.5rem 2rem -1.5rem;
+
+    padding: 2rem;
+  }
+
+  .personal p:first-child {
+    font-size: 1.5rem;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 0.5em;
+
+    min-height: fit-content;
+
+    padding: 1rem;
   }
 
   .header-right {
-    display: flex;
-    gap: 1em;
+    margin-inline-end: 0;
   }
 
-  .header-right > button {
-    border: none;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 0.7rem;
+  .cv-paper {
+    padding: 1rem;
   }
 
-  .print-btn {
-    background-color: rgb(249, 65, 65);
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
+  .personal {
+    margin: -1rem -1rem 1.5rem -1rem;
+    padding: 1.5rem;
   }
 
-  .download-btn {
-    background-color: blueviolet;
-  }
 }
