@@ -66,6 +66,7 @@ function Work({ work, setWork }) {
             name="company"
             value={job.company}
             onChange={(e) => handleChange(index, e)}
+            placeholder="Google"
           />
 
           <label>Job Title:</label>
@@ -74,6 +75,7 @@ function Work({ work, setWork }) {
             name="jobTitle"
             value={job.jobTitle}
             onChange={(e) => handleChange(index, e)}
+            placeholder="SDE 2"
           />
 
           <label>Job Responsibility:</label>

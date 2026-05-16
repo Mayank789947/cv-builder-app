@@ -30,6 +30,7 @@ function PersonDetails({ person, setPerson }) {
           value={person.name}
           onChange={handleChange}
           placeholder="John Doe"
+          required={true}
         />
 
         <label htmlFor="email">Email: </label>
@@ -39,7 +40,8 @@ function PersonDetails({ person, setPerson }) {
           id="email"
           value={person.email}
           onChange={handleChange}
-          placeholder="example@gmail.com"
+          placeholder="example@mail.com"
+          required={true}
         />
 
         <label htmlFor="phone">Phone: </label>
@@ -49,6 +51,7 @@ function PersonDetails({ person, setPerson }) {
           id="phone"
           value={person.phone}
           onChange={handleChange}
+          placeholder="+1 555-555-5555"
         />
 
         <label htmlFor="website">Website: </label>
@@ -58,6 +61,7 @@ function PersonDetails({ person, setPerson }) {
           id="website"
           value={person.website}
           onChange={handleChange}
+          placeholder="www.myportfolio.com"
         />
       </div>}
     </>

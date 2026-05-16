@@ -100,7 +100,7 @@ function Education({ institute, setInstitute }) {
                         {/* ONLY LAST ITEM GETS BUTTON */}
                         {index === institute.length - 1 && (
                             <button className="add-btn" onClick={handleClick}>
-                                + Add More Degree
+                                + Add More Course
                             </button>
                         )}
                     </div>
