@@ -1,4 +1,4 @@
-function CVPreview({ person, institute, work, techStacks }) {
+function CVPreview({ person, institute, work, techStacks, skills }) {
 
    const { name, email, phone, website } = person;
 
@@ -29,6 +29,10 @@ function CVPreview({ person, institute, work, techStacks }) {
    // TECH STACKS CHECK
    const hasTechStacks = techStacks.some(
       (item) => item.techStack
+   );
+
+   const hasSkills = skills.some(
+      (item) => item.skill
    );
 
    return (
@@ -62,7 +66,7 @@ function CVPreview({ person, institute, work, techStacks }) {
 
                   {(edu.collegePassYear || edu.currentlyStudying) && (
                      <p>
-                        End Date: 
+                        End Date:
                         {edu.currentlyStudying
                            ? " Currently Studying"
                            : " " + edu.collegePassYear}
@@ -102,7 +106,7 @@ function CVPreview({ person, institute, work, techStacks }) {
 
                   {(job.endDate || job.currentlyWorking) && (
                      <p>
-                        End Date: 
+                        End Date:
                         {job.currentlyWorking
                            ? " Currently Working"
                            : " " + job.endDate}
@@ -111,6 +115,28 @@ function CVPreview({ person, institute, work, techStacks }) {
 
                </div>
             ))}
+
+            {/* SKILLS SECTION */}
+            {hasSkills && (
+               <div className="skills-preview">
+                  <h3>Soft Skills</h3>
+
+                  <div className="skills-list">
+                     {skills.map((item, index) => (
+                        item.skill && (
+                           <ul className="list">
+                              <li
+                                 className="skill-listItem"
+                                 key={index}
+                              >
+                                 {item.skill}
+                              </li>
+                           </ul>
+                        )
+                     ))}
+                  </div>
+               </div>
+            )}
 
             {/* TECH STACKS SECTION */}
             {hasTechStacks && (
@@ -131,6 +157,8 @@ function CVPreview({ person, institute, work, techStacks }) {
                   </div>
                </div>
             )}
+
+
 
          </div>
 
