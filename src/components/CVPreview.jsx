@@ -11,7 +11,8 @@ function CVPreview({ person, institute, work, techStacks }) {
       (edu) =>
          edu.college ||
          edu.course ||
-         edu.collegePassYear
+         edu.collegePassYear ||
+         edu.currentlyStudying
    );
 
    // WORK CHECK
@@ -21,7 +22,8 @@ function CVPreview({ person, institute, work, techStacks }) {
          job.jobTitle ||
          job.jobResponsibility ||
          job.startDate ||
-         job.endDate
+         job.endDate ||
+         job.currentlyWorking
    );
 
    // TECH STACKS CHECK
@@ -58,10 +60,12 @@ function CVPreview({ person, institute, work, techStacks }) {
                      <p>Course: {edu.course}</p>
                   )}
 
-                  {edu.collegePassYear && (
+                  {(edu.collegePassYear || edu.currentlyStudying) && (
                      <p>
-                        Passing Year:
-                        {edu.collegePassYear}
+                        End Date: 
+                        {edu.currentlyStudying
+                           ? " Currently Studying"
+                           : " " + edu.collegePassYear}
                      </p>
                   )}
 
@@ -92,14 +96,16 @@ function CVPreview({ person, institute, work, techStacks }) {
                   {job.startDate && (
                      <p>
                         Start Date:
-                        {job.startDate}
+                        {" " + job.startDate}
                      </p>
                   )}
 
-                  {job.endDate && (
+                  {(job.endDate || job.currentlyWorking) && (
                      <p>
-                        End Date:
-                        {job.endDate}
+                        End Date: 
+                        {job.currentlyWorking
+                           ? " Currently Working"
+                           : " " + job.endDate}
                      </p>
                   )}
 
