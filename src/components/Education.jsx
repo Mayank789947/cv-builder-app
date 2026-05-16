@@ -11,7 +11,16 @@ function Education({ institute, setInstitute }) {
     function handleChange(index, e) {
         const updatedInstitute = [...institute];
 
-        updatedInstitute[index][e.target.name] = e.target.value;
+        const value =
+            e.target.type === "checkbox"
+                ? e.target.checked
+                : e.target.value;
+
+        updatedInstitute[index][e.target.name] = value;
+
+        if (e.target.name === "currentlyStudying" && e.target.checked) {
+            updatedInstitute[index].collegePassYear = "";
+        }
 
         setInstitute(updatedInstitute);
     }
@@ -22,7 +31,8 @@ function Education({ institute, setInstitute }) {
             {
                 college: "",
                 course: "",
-                collegePassYear: ""
+                collegePassYear: "",
+                currentlyStudying: false
             }
         ])
     }
@@ -42,32 +52,13 @@ function Education({ institute, setInstitute }) {
                 <p>{isOpen ? " ▲" : " ▼"}</p>
             </div>
 
-           {isOpen && <div className="section-content education-details">
-                <label htmlFor="school">School</label>
-                <input
-                    type="text"
-                    name="school"
-                    id="school"
-                    value={institute.school}
-                    onChange={handleChange}
-                    placeholder="School Name"
-                />
-
-                <label htmlFor="schoolPassYear">Passing Year</label>
-                <input
-                    type="text"
-                    name="schoolPassYear"
-                    id="schoolPassYear"
-                    value={institute.schoolPassYear}
-                    onChange={handleChange}
-                    placeholder="Year"
-                />
+            {isOpen && <div className="section-content education-details">
 
                 {institute.map((inst, index) => (
                     <div className="college-details" key={index}>
-                        <h2>College {index + 1}</h2>
+                        <h2>Institute {index + 1}</h2>
 
-                        <label>College Name:</label>
+                        <label>Institute Name:</label>
                         <input
                             type="text"
                             name="college"
@@ -83,13 +74,24 @@ function Education({ institute, setInstitute }) {
                             onChange={(e) => handleChange(index, e)}
                         />
 
-                        <label>Pass Year:</label>
+                        <label>Passed Year:</label>
                         <input
                             type="text"
-                            name="passYear"
+                            name="collegePassYear"
                             value={inst.collegePassYear}
+                            disabled={inst.currentlyStudying}
                             onChange={(e) => handleChange(index, e)}
                         />
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="currentlyStudying"
+                                checked={inst.currentlyStudying}
+                                onChange={(e) => handleChange(index, e)}
+                            />
+                            I am currently studying here
+                        </label>
 
                         {institute.length > 1 && (
                             <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
