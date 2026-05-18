@@ -1,3 +1,5 @@
+import { Mail, Phone, Globe } from "lucide-react";
+
 function CVPreview({ person, institute, work, techStacks, skills }) {
 
    const { name, email, phone, website } = person;
@@ -43,10 +45,10 @@ function CVPreview({ person, institute, work, techStacks, skills }) {
             {/* PERSONAL SECTION */}
             {hasPersonalInfo && (
                <div className="personal">
-                  {name && <p>{name}</p>}
-                  {email && <p>{email}</p>}
-                  {phone && <p>{phone}</p>}
-                  {website && <p>{website}</p>}
+                  {name && <p className="name">{name}</p>}
+                  {email && <p className="email"><Mail size={16}/>{email}</p>}
+                  {phone && <p className="phone"><Phone size={16}/>{phone}</p>}
+                  {website && <p className="globe"><Globe size={16}/>{website}</p>}
                </div>
             )}
 
@@ -92,8 +94,7 @@ function CVPreview({ person, institute, work, techStacks, skills }) {
 
                   {job.jobResponsibility && (
                      <p>
-                        Job Responsibility:
-                        {job.jobResponsibility}
+                        Job Responsibility: {job.jobResponsibility}
                      </p>
                   )}
 
