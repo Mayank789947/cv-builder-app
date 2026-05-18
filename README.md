@@ -1,16 +1,114 @@
-# React + Vite
+CV Builder App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive CV Builder application made with React. Create, preview, and download professional CVs in real time.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Live CV preview
 
-## React Compiler
+Add personal details
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Add multiple education entries
 
-## Expanding the ESLint configuration
+Add multiple work experience entries
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Skills section
+
+Responsive layout
+
+Print / Download CV as PDF
+
+Clean and modern UI
+
+Conditional rendering for empty sections
+
+Tech Stack
+
+React
+
+JavaScript (ES6+)
+
+CSS3
+
+Vite
+
+Project Structure
+
+src/
+│
+├── components/
+│   ├── Header.jsx
+│   ├── PersonDetails.jsx
+│   ├── Education.jsx
+│   ├── Work.jsx
+│   ├── Skills.jsx
+│   └── CVPreview.jsx
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+
+Installation
+
+Clone the repository:
+
+git clone <your-repository-url>
+
+Move into the project folder:
+
+cd cv-builder
+
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+Build for Production
+
+npm run build
+
+Preview Production Build
+
+npm run preview
+
+Usage
+
+Enter your personal information.
+
+Add education details.
+
+Add work experience.
+
+Add your skills.
+
+Preview updates instantly.
+
+Download or print your CV.
+
+
+
+Future Improvements
+
+Multiple CV templates
+
+Dark mode
+
+Drag and drop section reordering
+
+Save CV locally
+
+Export to PDF directly
+
+
+
+Author
+
+Made by Cody_Mynk
+
+License
+
+This project is open source and available under the MIT License.
+
