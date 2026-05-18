@@ -1,39 +1,29 @@
-CV Builder App
+# CV Builder
 
 A modern and responsive CV Builder application made with React. Create, preview, and download professional CVs in real time.
 
-Features
+## Features
 
-Live CV preview
+* Live CV preview
+* Add personal details
+* Add multiple education entries
+* Add multiple work experience entries
+* Skills section
+* Responsive layout
+* Print / Download CV as PDF
+* Clean and modern UI
+* Conditional rendering for empty sections
 
-Add personal details
+## Tech Stack
 
-Add multiple education entries
+* React
+* JavaScript (ES6+)
+* CSS3
+* Vite
 
-Add multiple work experience entries
+## Project Structure
 
-Skills section
-
-Responsive layout
-
-Print / Download CV as PDF
-
-Clean and modern UI
-
-Conditional rendering for empty sections
-
-Tech Stack
-
-React
-
-JavaScript (ES6+)
-
-CSS3
-
-Vite
-
-Project Structure
-
+```bash
 src/
 │
 ├── components/
@@ -47,68 +37,71 @@ src/
 ├── App.jsx
 ├── main.jsx
 └── index.css
+```
 
-Installation
+## Installation
 
 Clone the repository:
 
+```bash
 git clone <your-repository-url>
+```
 
 Move into the project folder:
 
+```bash
 cd cv-builder
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
 
 Start the development server:
 
+```bash
 npm run dev
+```
 
-Build for Production
+## Build for Production
 
+```bash
 npm run build
+```
 
-Preview Production Build
+## Preview Production Build
 
+```bash
 npm run preview
+```
 
-Usage
+## Usage
 
-Enter your personal information.
+1. Enter your personal information.
+2. Add education details.
+3. Add work experience.
+4. Add your skills.
+5. Preview updates instantly.
+6. Download or print your CV.
 
-Add education details.
+## Future Improvements
 
-Add work experience.
+* Multiple CV templates
 
-Add your skills.
+* Dark mode
 
-Preview updates instantly.
+* Drag and drop section reordering
 
-Download or print your CV.
+* Save CV locally
 
+* Export to PDF directly
 
-
-Future Improvements
-
-Multiple CV templates
-
-Dark mode
-
-Drag and drop section reordering
-
-Save CV locally
-
-Export to PDF directly
-
-
-
-Author
+## Author
 
 Made by Cody_Mynk
 
-License
+## License
 
 This project is open source and available under the MIT License.
-
