@@ -40,7 +40,6 @@ function TechStacks({ techStacks, setTechStacks }) {
                 <p>{isOpen ? " ▲" : " ▼"}</p>
             </div>
 
-            <div className="techStacks">
                 {isOpen && techStacks.map((item, index) => (
                     <div className="section-content" key={index}>
 
@@ -68,7 +67,6 @@ function TechStacks({ techStacks, setTechStacks }) {
                         )}
                     </div>
                 ))}
-            </div>
         </>
     );
 }
